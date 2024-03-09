@@ -4,5 +4,12 @@
  * @returns {function} - function-getter which allow get value from object by set path
  */
 export function createGetter(path) {
-
+    let properties = path.split(".");
+    return function getProperty(object){
+        if(Object.keys(object).length == 0){
+            return undefined;
+        }
+        let currentProperty = properties.shift( );
+        return properties.length == 0 ? object[currentProperty] : getProperty( object[currentProperty] );
+    }
 }
