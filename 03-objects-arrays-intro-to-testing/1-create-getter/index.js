@@ -6,6 +6,9 @@
 export function createGetter(path) {
     let properties = path.split(".");
     return function getProperty(object){
+        if(object == null ) {
+            return null;
+        }
         if(Object.keys(object).length == 0){
             return undefined;
         }
