@@ -6,10 +6,10 @@
 export function createGetter(path) {
     let properties = path.split(".");
     return function getProperty(object){
-        if(object == null ) {
+        if(object === null){
             return null;
         }
-        if(Object.keys(object).length == 0){
+        if(object === undefined || Object.keys(object).length == 0) {
             return undefined;
         }
         let currentProperty = properties.shift( );
